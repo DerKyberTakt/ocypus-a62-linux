@@ -86,7 +86,15 @@ byte layout was first worked out by the community projects listed under
 
 ### Arch Linux / Omarchy
 
-From a release:
+Prebuilt package from the latest
+[release](https://github.com/DerKyberTakt/ocypus-a62-linux/releases/latest):
+
+```bash
+sudo pacman -U https://github.com/DerKyberTakt/ocypus-a62-linux/releases/download/v0.2.0/ocypus-a62-linux-0.2.0-1-any.pkg.tar.zst
+```
+
+Or build it yourself; the `PKGBUILD` fetches the tagged release tarball from
+GitHub and verifies its checksum:
 
 ```bash
 git clone https://github.com/DerKyberTakt/ocypus-a62-linux
@@ -94,8 +102,9 @@ cd ocypus-a62-linux
 makepkg -si
 ```
 
-The `PKGBUILD` fetches the tagged release tarball from GitHub. A rolling
-`ocypus-a62-linux-git` package lives in `aur/` for the AUR.
+AUR packages (`ocypus-a62-linux` and the rolling `ocypus-a62-linux-git`) are
+prepared in this repository and will be published when AUR account
+registration reopens.
 
 The package installs:
 
