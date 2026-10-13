@@ -18,8 +18,7 @@ depends=('python>=3.11' 'systemd')
 optdepends=('lm_sensors: inspect available temperature sensors with sensors(1)')
 install=ocypus-a62.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-# Replaced by updpkgsums once the v$pkgver tag exists on GitHub.
-sha256sums=('SKIP')
+sha256sums=('963e3344d986d6ddf0eb8215c5b3b39352c2066acd4b961faa85df5d82b1ffce')
 
 build() {
   cd "$pkgname-$pkgver"

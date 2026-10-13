@@ -10,6 +10,6 @@ pkgbase = ocypus-a62-linux
 	depends = systemd
 	optdepends = lm_sensors: inspect available temperature sensors with sensors(1)
 	source = ocypus-a62-linux-0.2.0.tar.gz::https://github.com/DerKyberTakt/ocypus-a62-linux/archive/v0.2.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 963e3344d986d6ddf0eb8215c5b3b39352c2066acd4b961faa85df5d82b1ffce
 
 pkgname = ocypus-a62-linux
