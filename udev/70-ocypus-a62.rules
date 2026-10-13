@@ -1,0 +1,11 @@
+# Ocypus IOTA A62 CPU cooler - digital display
+#
+# The cooler's controller enumerates as USB 1a2c:434d "SEMICO USB Gaming
+# Keyboard". Interface 0 is a (silent) boot keyboard; interface 1 carries the
+# vendor-defined display report. Only the hidraw node of interface 1 is
+# granted to the active seat user via the uaccess ACL, so a systemd user
+# service can write to it. Nothing else changes; no 0666, no extra group.
+#
+# Must sort before 73-seat-late.rules (which applies the uaccess tag) and
+# after 60-persistent-hidraw.rules (which sets ID_USB_INTERFACE_NUM).
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1a2c", ATTRS{idProduct}=="434d", ENV{ID_USB_INTERFACE_NUM}=="01", TAG+="uaccess"

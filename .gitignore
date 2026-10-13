@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+# makepkg / make build outputs
+/pkg/
+/src/
+*.pkg.tar.zst
+*.pkg.tar.xz
+# local release tarball used to test the PKGBUILD before the tag exists
+/ocypus-a62-linux-*.tar.gz
+/ocypus-a62.service

@@ -1,0 +1,43 @@
+# Maintainer: Daskey <218856630+DerKyberTakt@users.noreply.github.com>
+#
+# Rolling package for the AUR: builds the latest commit on the default branch.
+# Publish by copying this directory's PKGBUILD and .SRCINFO into a clone of
+#   ssh://aur@aur.archlinux.org/ocypus-a62-linux-git.git
+
+pkgname=ocypus-a62-linux-git
+_pkgname=ocypus-a62-linux
+pkgver=0.2.0.r0.g0000000
+pkgrel=1
+pkgdesc="Show CPU temperature on the Ocypus IOTA A62 cooler display (hwmon to hidraw, no Ocypus Digital needed)"
+arch=('any')
+url="https://github.com/DerKyberTakt/ocypus-a62-linux"
+license=('MIT')
+depends=('python>=3.11' 'systemd')
+optdepends=('lm_sensors: inspect available temperature sensors with sensors(1)')
+makedepends=('git')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+install=ocypus-a62.install
+source=("$_pkgname::git+$url.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$_pkgname"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "$_pkgname"
+  make BINDIR=/usr/bin build
+}
+
+check() {
+  cd "$_pkgname"
+  make check
+}
+
+package() {
+  cd "$_pkgname"
+  make DESTDIR="$pkgdir" PREFIX=/usr UDEVDIR=/usr/lib/udev/rules.d install
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

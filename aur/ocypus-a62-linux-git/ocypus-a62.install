@@ -1,0 +1,24 @@
+post_install() {
+  cat <<MSG
+
+  ocypus-a62: udev rule installed (pacman reloads udev automatically).
+  If the cooler is already plugged in, re-trigger it once:
+      sudo udevadm trigger -s hidraw
+  Then, as your desktop user:
+      ocypus-a62 detect
+      ocypus-a62 test            # 12, 34, then live temperature
+      systemctl --user enable --now ocypus-a62
+  Optional config: cp /usr/share/ocypus-a62/config.example.toml ~/.config/ocypus-a62/config.toml
+
+MSG
+}
+
+post_upgrade() {
+  echo "  ocypus-a62: restart the service to pick up the new version:"
+  echo "      systemctl --user restart ocypus-a62"
+}
+
+pre_remove() {
+  echo "  ocypus-a62: stop the user service before removal if it is running:"
+  echo "      systemctl --user disable --now ocypus-a62"
+}

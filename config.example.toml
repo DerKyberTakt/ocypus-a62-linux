@@ -1,0 +1,32 @@
+# ocypus-a62 configuration
+#
+# Copy to ~/.config/ocypus-a62/config.toml and edit. Every key is optional;
+# the values shown are the defaults. Restart the service after changes:
+#   systemctl --user restart ocypus-a62
+
+# Seconds between display updates. Minimum 0.5. The display holds its value,
+# so 2 s is plenty and costs nothing measurable.
+interval = 2.0
+
+# "c" for Celsius, "f" for Fahrenheit. Also sets the unit flag the display
+# receives (byte 7 of the report).
+unit = "c"
+
+# HID report type. "feature" matches the HID descriptor and is confirmed
+# working on the IOTA A62; "output" is an untested fallback. Only change this if 'ocypus-a62 test' shows nothing.
+method = "feature"
+
+# Blank the display when the service stops (logout, shutdown, restart).
+blank_on_exit = true
+
+# Force a specific hidraw node instead of auto-detecting by USB ID. Leave
+# unset: hidraw numbers change between boots and replugs.
+# device = "/dev/hidraw8"
+
+[sensor]
+# Which /sys/class/hwmon device and temp*_label to read. The default is the
+# Intel package sensor. For AMD use hwmon = "k10temp" and label = "Tctl".
+# If the label is not found, the hottest input of that hwmon device is used
+# and a warning is logged once.
+hwmon = "coretemp"
+label = "Package id 0"

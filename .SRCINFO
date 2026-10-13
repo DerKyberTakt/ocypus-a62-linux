@@ -1,0 +1,15 @@
+pkgbase = ocypus-a62-linux
+	pkgdesc = Show CPU temperature on the Ocypus IOTA A62 cooler display (hwmon to hidraw, no Ocypus Digital needed)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/DerKyberTakt/ocypus-a62-linux
+	install = ocypus-a62.install
+	arch = any
+	license = MIT
+	depends = python>=3.11
+	depends = systemd
+	optdepends = lm_sensors: inspect available temperature sensors with sensors(1)
+	source = ocypus-a62-linux-0.2.0.tar.gz::https://github.com/DerKyberTakt/ocypus-a62-linux/archive/v0.2.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = ocypus-a62-linux
